@@ -1,1 +1,7 @@
 <h1><%= @topic.title %></h1>
+
+<div class="media-body">
+  <h4 class="media-heading">
+    <%= render partial: 'topics/posts/post', collection: @posts %>
+  </h4>
+</div>
