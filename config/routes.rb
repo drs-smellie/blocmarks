@@ -1,7 +1,8 @@
 Blocmarks::Application.routes.draw do
 
   resources :topics do
-    resources :posts, except: [:index]
+    resources :posts, except: [:index], controller: 'topics/posts' do
+    end
   end
 
     

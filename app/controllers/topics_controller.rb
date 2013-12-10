@@ -9,7 +9,18 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.find(params[:id])
+    @topic = Topic.new
+  end
+
+  def create
+    @topic = Topic.new(topic_params)
+    if @topic.save
+      flash[:notice] = "Topic was saved."
+      redirect_to @topic
+    else
+      flash[:error] = "There was a problem saving your Topic. Please try again."
+      render :new
+    end
   end
 
   def edit
