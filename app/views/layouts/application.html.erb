@@ -17,10 +17,10 @@
         <div class="pull-right user-info">
           <% if current_user %>
             Logged in as <%=current_user.email %>.
-            <%= link_to("Logout", :controller => "sessions", :action => 'destroy') %>
+            <%= link_to "Log Out", log_out_path %>
           <% else %>
-           <%= link_to "Sign Up", new_user_path %> or
-           <%= link_to "Log In", new_session_path %>
+           <%= link_to "Sign Up", sign_up_path %> or
+           <%= link_to "Log In", log_in_path %>
            <% end %>
         </div>
       </ul>
