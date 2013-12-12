@@ -5,3 +5,9 @@
     <%= render partial: 'topics/posts/post', collection: @posts %>
   </h4>
 </div>
+  <div class="span4">
+    <% if can? :create, Post %>
+    <%= link_to "Add link", new_topic_post_path(@topic), class: 'btn btn-primary btn-mini' %>
+    <% end %>
+  </div>
+

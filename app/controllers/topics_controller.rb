@@ -10,15 +10,17 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    authorize! :create, Topic, message: "You need to be a member to add a topic =^_^="
   end
 
   def create
     @topic = Topic.new(topic_params)
+    authorize! :create, @topic, message: "You need to be a member to add a topic =^_^="
     if @topic.save
       flash[:notice] = "Topic was saved."
       redirect_to @topic
     else
-      flash[:error] = "There was a problem saving your Topic. Please try again."
+      flash[:error] = "There was a problem saving your Topic. Please try again =^_^="
       render :new
     end
   end

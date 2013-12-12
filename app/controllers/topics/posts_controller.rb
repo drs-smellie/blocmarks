@@ -7,17 +7,20 @@ class Topics::PostsController < ApplicationController
   def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
+    authorize! :create, Post, message: "You need to be a member to add a link =^_^="
+
   end
 
   def create
     @topic = Topic.find(params[:topic_id])
     @post = Post.new(post_params)
     @post.topic = @topic
+    authorize! :create, @post, message: "You need to be a member to add a link =^_^="
     if @post.save
       flash[:notice] = "Post was saved."
       redirect_to [@topic, @post]
     else
-      flash[:error] = "There was a problem saving your Post. Please try again."
+      flash[:error] = "There was a problem saving your link. Please try again =^_^="
       render :new
     end
   end
