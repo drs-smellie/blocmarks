@@ -18,7 +18,7 @@ class Topics::PostsController < ApplicationController
     authorize! :create, @post, message: "You need to be a member to add a link =^_^="
     if @post.save
       flash[:notice] = "Post was saved."
-      redirect_to [@topic, @post]
+      redirect_to [@topic]
     else
       flash[:error] = "There was a problem saving your link. Please try again =^_^="
       render :new

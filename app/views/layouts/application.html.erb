@@ -4,6 +4,7 @@
     <title>Blocmarks</title>
       <%= stylesheet_link_tag    "application", media: "all"%>
       <%= javascript_include_tag "application" %>
+      <script src="http://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
       <%= csrf_meta_tags %>
 
   </head>
@@ -16,7 +17,7 @@
     
         <div class="pull-right user-info">
           <% if current_user %>
-            Logged in as <%=current_user.email %>.
+            Logged in as <%= current_user.email %>.
             <%= link_to "Log Out", log_out_path %>
           <% else %>
            <%= link_to "Sign Up", sign_up_path %> or
@@ -24,7 +25,9 @@
            <% end %>
         </div>
       </ul>
-      
+
+        
+            
     <% if flash[:notice] %>
         <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
