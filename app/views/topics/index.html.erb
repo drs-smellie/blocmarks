@@ -9,7 +9,7 @@
           <%= link_to topic.title, topic %>
         </h4>
         <small>
-          submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user_id %>
+          submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.email %>
         </small>
       </div>
     </div>

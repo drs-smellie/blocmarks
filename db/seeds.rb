@@ -9,9 +9,9 @@ rand(4..10).times do
   u.save
 
   rand(10..30).times do
-    t = Topic.create(title: Faker::Lorem.words(rand(1..4)).join("\n"))
+    t = u.topics.create(title: Faker::Lorem.words(rand(1..4)).join("\n"))
     rand(3..10).times do
-      t.posts.create(url: Faker::Internet.url)
+      u.posts.create(url: Faker::Internet.url)
     end
   end
 end
