@@ -4,6 +4,16 @@
 
 .embed {
   img {
-    width: 300px;
+    width: 245px;
+    height: 190px;
   }
+}
+
+.provider {
+  display: none;
+}
+
+.row {
+  padding: 0 15px;
+  margin: 0 -15px;
 }

@@ -4,6 +4,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    @topics = @user.topics.posts.visible_to(current_user)
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -13,6 +22,8 @@ class UsersController < ApplicationController
       render "new"
     end
   end
+
+  private
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)

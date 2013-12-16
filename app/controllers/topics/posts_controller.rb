@@ -14,6 +14,9 @@ class Topics::PostsController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
+    @posts = @topic.posts
+
     @post.topic = @topic
     authorize! :create, @post, message: "You need to be a member to add a link =^_^="
     if @post.save
