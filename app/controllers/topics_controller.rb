@@ -14,7 +14,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
+    @topic = Topic.new(params[:topic_id])
+    @topic = current_user.topics.build(topic_params)
+
     authorize! :create, @topic, message: "You need to be a member to add a topic =^_^="
     if @topic.save
       flash[:notice] = "Topic was saved."

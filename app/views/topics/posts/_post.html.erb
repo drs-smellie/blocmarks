@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-3">
     <div class="thumbnail">
-      <a href="<%= post.url %>" class="thumbnail"><%= post.url%></a>
+      <a href="<%= post.url %>" class="thumbnail"><%= post.url %></a>
       <p>
       </p>
         <small>
-          submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to (current_user.email), current_user %><br/>
+          submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.email %><br/>
         </small>
         <p></p>
           <p><a href="#" class="btn btn-success" role="button">Collect!</a>
