@@ -6,7 +6,7 @@
       <p>
       </p>
         <small>
-          submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.email if post.user %><br/>
+          submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to (current_user.email), current_user %><br/>
         </small>
         <p></p>
           <p><a href="#" class="btn btn-success" role="button">Collect!</a>

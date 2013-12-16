@@ -4,11 +4,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-    @current_user = User.find(params[:id])
-    @posts = @user.posts.order("created_at DESC").first(20)
 
-  end
 
   def edit
     @user = User.find(params[:id])

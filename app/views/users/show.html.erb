@@ -1,4 +1,12 @@
 <div class="media-body">
-  <%= @posts.current_user %>
+  <h2 class="media-heading"> Posts by <%= current_user.email %></h2>
+    <small>
+      <%=current_user.email %> has already posted <%= pluralize(current_user.posts.count, 'posts') %>
+    </small>
 </div>
+
+<div class="media-body">
+  <%= render partial: 'topics/posts/post', collection: current_user.posts %>
+</div>
+
 
