@@ -3,6 +3,8 @@
   <div class="col-md-3">
     <div class="thumbnail">
       <a href="<%= post.url %>" class="thumbnail"><%= post.url%></a>
+      <p>
+      </p>
         <small>
           submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.email if post.user %><br/>
         </small>

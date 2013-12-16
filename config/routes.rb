@@ -6,7 +6,9 @@ Blocmarks::Application.routes.draw do
 
   resources :sessions
 
-  resources :users
+  resources :users do
+    resources :posts
+  end
   resources :topics do
     resources :posts, except: [:index], controller: 'topics/posts' do
     end

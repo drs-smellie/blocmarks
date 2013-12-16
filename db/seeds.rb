@@ -21,7 +21,7 @@ u = User.new(
   password: 'blocmarks1', 
   password_confirmation: 'blocmarks1')
 u.save
-u.update_attribute(:role, 'admin')
+u.update_attribute(:role, 'member')
 
 puts "Seed finished"
 puts "#{User.count} users created"
