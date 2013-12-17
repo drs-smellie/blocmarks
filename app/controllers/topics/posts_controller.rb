@@ -8,7 +8,6 @@ class Topics::PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
     authorize! :create, Post, message: "You need to be a member to add a link =^_^="
-
   end
 
   def create
