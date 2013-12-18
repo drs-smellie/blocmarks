@@ -3,7 +3,7 @@
   <p>Store and curate your links for later reference.</p>
 </div>
 
-<h2>Newest topics</h2>
+<h2>Latest topics from all BlocMarks users</h2>
 <% @topics.order('created_at DESC').limit(4).each do |topic| %>
   <div class="media">
     <div class="media-body">
@@ -17,9 +17,7 @@
           </div>
         <div>
           See all posts in <%= link_to topic.title, topic %>
-          <small>
-            <p></p>
-            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.email if topic.user %>
+          <small> submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.email if topic.user %>
           </small>
         </div>     
       </div>
