@@ -3,3 +3,25 @@
   <p>Store and curate your links for later reference.</p>
 </div>
 
+<h2>Newest topics</h2>
+<% @topics.order('created_at DESC').limit(4).each do |topic| %>
+  <div class="media">
+    <div class="media-body">
+        <h4 class="media-heading">
+          <%= link_to topic.title, topic %>
+        </h4>
+        <small>Latest posts in this topic:</small>
+          <p> </p>
+          <div class="media-body">
+            <%= render partial: 'topics/posts/post', collection: topic.posts.order('created_at DESC').limit(4) %>
+          </div>
+        <div>
+          See all posts in <%= link_to topic.title, topic %>
+          <small>
+            <p></p>
+            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.email if topic.user %>
+          </small>
+        </div>     
+      </div>
+    </div>
+<% end %>
