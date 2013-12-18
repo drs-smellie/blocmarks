@@ -7,10 +7,10 @@ def create
     favorite = current_user.favorites.create(post: @post)
     if favorite.valid?
       flash[:notice] = "Favorited post"
-      redirect_to [@topic, @post]
+      redirect_to [@topic]      
     else
       flash[:error] = "Unable to add favorite. Please try again."
-      redirect_to [@topic, @post]
+      redirect_to [@topic]
     end
   end
 
@@ -22,10 +22,10 @@ def create
     authorize! :destroy, @favorite, message: "You cannot do that!"
     if @favorite.destroy
       flash[:notice] = "Removed favorite."
-      redirect_to [@topic, @post]
+      redirect_to [@topic]
    else
       flash[:error] = "Unable to remove favorite. Please try again."
-      redirect_to [@topic, @post]
+      redirect_to [@topic]
     end
   end
 end

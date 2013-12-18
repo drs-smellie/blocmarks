@@ -28,6 +28,36 @@ class Topics::PostsController < ApplicationController
   end
 
   def edit
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    authorize! :edit, @post, message: "You need to own the post to edit it."
+  end
+  
+  def update
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    authorize! :update, @post, message: "You need to own the post to update it."
+    if @post.update_attributes(post_params)
+      flash[:notice] = "Post was updated."
+      redirect_to [@topic, @post]
+    else
+      flash[:error] = "There was an error saving the post. Please try again."
+      render :edit
+    end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
+    url = @post.url
+    authorize! :destroy, @post, message: "You need to own the post to update it."
+    if @post.destroy
+        flash[:notice] = "Post was deleted."
+        redirect_to @topic
+    else
+        flash[:error] = "There was an error deleting the post. Please try again."
+        redirect_to @topic
+    end
   end
 
   def post_params
