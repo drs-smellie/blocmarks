@@ -3,7 +3,8 @@ require 'faker'
 rand(4..10).times do
   password = Faker::Lorem.characters(10)
   u = User.new(
-    email: Faker::Internet.email, 
+    email: Faker::Internet.email,
+    user_name: Faker::Name.name, 
     password: password, 
     password_confirmation: password)
   u.save
@@ -19,7 +20,8 @@ rand(4..10).times do
 end
 
 u = User.new(
-  email: 'melanie.keatley@gmail.com', 
+  email: 'melanie.keatley@gmail.com',
+  user_name: 'Mel', 
   password: 'blocmarks1', 
   password_confirmation: 'blocmarks1')
 u.save

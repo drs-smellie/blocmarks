@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <h1>My personal BlocMarks</h1>
-  <p>Links collected by <%= current_user.email %></p>
+  <p>Links collected by <%= current_user.user_name %></p>
 </div>
 
 <div>
@@ -25,7 +25,7 @@
           See all posts in <%= link_to topic.title, topic %>
           <small>
             <p></p>
-            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.email if topic.user %>
+            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.user_name if topic.user %>
           </small>
         </div>     
       </div>

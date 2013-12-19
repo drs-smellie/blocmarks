@@ -17,7 +17,7 @@
           See all posts in <%= link_to topic.title, topic %>
           <small>
             <p></p>
-            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.email if topic.user %>
+            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.user_name if topic.user %>
           </small>
         </div>     
       </div>
