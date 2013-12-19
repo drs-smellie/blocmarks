@@ -1,5 +1,8 @@
 class FavoritesController < ApplicationController
-def create
+  respond_to :html, :js
+  sleep 1
+
+  def create
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
 
