@@ -15,9 +15,3 @@
 //= require bootstrap
 //= require_tree . 
 
-$(document).ready(function() {
-  $(".js-favorite").click(function() {
-    $(".js-favorite").submit();
-    preventDefault();
-  });
-});

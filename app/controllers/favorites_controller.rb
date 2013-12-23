@@ -1,7 +1,6 @@
 class FavoritesController < ApplicationController
   respond_to :html, :js
-  sleep 1
-
+  
   def create
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
@@ -9,11 +8,13 @@ class FavoritesController < ApplicationController
     authorize! :create, Favorite, messsage: "You cannot do that!"
     favorite = current_user.favorites.create(post: @post)
     if favorite.valid?
-      flash[:notice] = "Favorited post"
-      redirect_to [@topic]      
+      flash[:notice] = "Favorited post"     
     else
       flash[:error] = "Unable to add favorite. Please try again."
-      redirect_to [@topic]
+    end
+
+    respond_with(@favorite) do |f|
+      f.html { redirect_to [ @post, @favorite] }
     end
   end
 
@@ -25,10 +26,13 @@ class FavoritesController < ApplicationController
     authorize! :destroy, @favorite, message: "You cannot do that!"
     if @favorite.destroy
       flash[:notice] = "Removed favorite."
-      redirect_to [@topic]
    else
       flash[:error] = "Unable to remove favorite. Please try again."
-      redirect_to [@topic]
+    end
+
+    respond_with(@favorite) do |f|
+      f.html { redirect_to [@topic, @post] }
     end
   end
+
 end
