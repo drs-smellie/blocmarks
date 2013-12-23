@@ -2,8 +2,12 @@
   <h1>Blocmarks</h1>
   <p>Store and curate your links for later reference. ⊂((・⊥・))⊃</p>
   <p> 
-    <%= link_to "Log in", log_in_path, class: 'btn btn-success btn-large' %> or 
-    <%= link_to "Sign Up", sign_up_path, class: 'btn btn-primary btn-large' %> today!
+    <% if current_user %>
+      Hello, <%= current_user.user_name %>!
+    <% else %>
+      <%= link_to "Log in", log_in_path, class: 'btn btn-success btn-large' %> or 
+      <%= link_to "Sign Up", sign_up_path, class: 'btn btn-primary btn-large' %> today!
+    <% end %>
 </div>
 
 <h2>Latest topics from all BlocMarks users</h2>
@@ -20,7 +24,7 @@
           </div>
         <div>
           See all posts in <%= link_to topic.title, topic %>
-          <small> submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.user_name if topic.user %>
+          <small> submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= topic.user.user_name if topic.user %>
           </small>
         </div>     
       </div>

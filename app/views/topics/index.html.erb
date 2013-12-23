@@ -1,8 +1,10 @@
 <h2>Ten latest topics</h2>
+
+
 <% if can? :create, Topic %>
   <%= link_to "Add a new topic", new_topic_path, class: 'btn btn-primary btn-mini' %>
  <% end %>
-<% @topics.order('created_at DESC').limit(10).each do |topic| %>
+<% @topics.order('created_at DESC').each do |topic| %>
   <div class="media">
     <div class="media-body">
         <h4 class="media-heading">
@@ -17,9 +19,12 @@
           See all posts in <%= link_to topic.title, topic %>
           <small>
             <p></p>
-            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= link_to topic.user.user_name if topic.user %>
+            <%= topic.title %> was submitted <%= time_ago_in_words(topic.created_at) %> ago by <%= topic.user.user_name %>
           </small>
         </div>     
       </div>
     </div>
 <% end %>
+<p>
+</p>
+<%= will_paginate @topics, renderer: BootstrapPagination::Rails %>

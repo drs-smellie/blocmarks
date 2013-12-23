@@ -1,11 +1,11 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.paginate(page: params[:page], per_page: 10)
   end
 
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.posts.includes(:user)
+    @posts = @topic.posts.includes(:user).paginate(page: params[:page], per_page: 10)
   end
 
   def new

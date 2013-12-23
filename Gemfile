@@ -34,6 +34,7 @@ gem 'jquery-rails'
 gem 'faker'
 
 gem 'cancan'
+gem 'will_paginate-bootstrap'
 
 gem 'mailman', require: false
 

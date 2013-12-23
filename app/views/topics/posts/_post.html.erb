@@ -5,13 +5,15 @@
       <p>
       </p>
         <small>
-          submitted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.user.user_name %><br/>
+          submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.user_name %><br/>
         </small>
         <p></p>
         <%= render partial: '/favorites/favorite', locals: { topic: @topic, post: post } %>
         <% if can? :destroy, Post %>
         <p></p>
+        <small>
         <%= link_to "Delete this post", [post.topic, post], method: :delete, confirm: 'Are you sure you want to delete this post?' %>
+        </small>
         <% end %>
   </div>
 </div>
