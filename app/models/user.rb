@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, class_name: "Post", source: :post
 
   before_create :set_member
 

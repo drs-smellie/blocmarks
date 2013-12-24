@@ -1,10 +1,9 @@
 class FavoritesController < ApplicationController
   respond_to :html, :js
-  
+
   def create
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
-
     authorize! :create, Favorite, messsage: "You cannot do that!"
     favorite = current_user.favorites.create(post: @post)
     if favorite.save

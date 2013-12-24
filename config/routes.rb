@@ -11,7 +11,7 @@ Blocmarks::Application.routes.draw do
   end
   resources :topics do
     resources :posts, except: [:index], controller: 'topics/posts' do
-      resources :favorites, only: [:create, :destroy]
+      resources :favorites, only: [:show, :create, :destroy]
     end
   end
 
