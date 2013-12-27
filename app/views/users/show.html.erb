@@ -1,5 +1,5 @@
-<div class="jumbotron">
-  <h1><%= current_user.user_name %>'s personal BlocMarks</h1>
+<div class="media">
+  <h2><%= current_user.user_name %>'s personal BlocMarks</h2>
   <p>Find your own topics and posted urls on this page. ヾ(＠⌒ー⌒＠)ノ</p>
 </div>
 
@@ -13,9 +13,9 @@
 <% current_user.topics.each do |topic| %>
   <div class="media">
     <div class="media-body">
-        <h4 class="media-heading">
+        <h3 class="media-heading">
           <%= link_to topic.title, topic %>
-        </h4>
+        </h3>
         <small>Latest posts in this topic:</small>
           <p> </p>
           <div class="media-body">
@@ -31,8 +31,10 @@
       </div>
     </div>
   <% end %>
-  <h4 class="media-heading">
-    <%= current_user.user_name %>'s Favorites
-  </h4>
-    <%= render partial: 'topics/posts/post', collection: current_user.favorite_posts %>
-
+  <p></p>
+  <div class="media">
+    <div class="media-body">
+      <h3 class="media-heading">
+        <%= current_user.user_name %>'s Favorites
+      </h3>
+       <%= render partial: 'topics/posts/post', collection: current_user.favorite_posts %>

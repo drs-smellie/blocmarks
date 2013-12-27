@@ -7,9 +7,9 @@
 <% @topics.order('created_at DESC').each do |topic| %>
   <div class="media">
     <div class="media-body">
-        <h4 class="media-heading">
+        <h3 class="media-heading">
           <%= link_to topic.title, topic %>
-        </h4>
+        </h3>
         <small>Latest posts in this topic:</small>
           <p> </p>
           <div class="media-body">
